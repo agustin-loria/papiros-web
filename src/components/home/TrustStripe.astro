@@ -1,0 +1,93 @@
+---
+---
+
+<div class="trust-stripe">
+  <div class="trust-item">
+    <span class="trust-number">40 años</span>
+    <span class="trust-label">tres generaciones en el rubro</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-number trust-rating">4,8 <span class="stars">★★★★★</span></span>
+    <span class="trust-label">128 reseñas en Google</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-number">1.200</span>
+    <span class="trust-label">productos en stock propio</span>
+  </div>
+  <div class="trust-item trust-item--last">
+    <span class="trust-number">24 a 48 h</span>
+    <span class="trust-label">entrega en todo el AMBA</span>
+  </div>
+</div>
+
+<style>
+  .trust-stripe {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--color-charcoal);
+    color: #fff;
+  }
+
+  .trust-item {
+    padding: 26px 32px;
+    border-right: 1px solid #3B4046;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &--last {
+      border-right: none;
+    }
+  }
+
+  .trust-number {
+    font-size: 31px;
+    font-weight: 900;
+    letter-spacing: -.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stars {
+    color: var(--color-star);
+    font-size: 20px;
+    letter-spacing: .05em;
+  }
+
+  .trust-label {
+    font-size: 13px;
+    color: #A8AFB5;
+  }
+
+  @media (max-width: 768px) {
+    .trust-stripe {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .trust-item {
+      padding: 16px 18px;
+      border-bottom: 1px solid #3B4046;
+
+      &:nth-child(even) {
+        border-right: none;
+      }
+
+      &:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+    }
+
+    .trust-number {
+      font-size: 21px;
+    }
+
+    .stars {
+      font-size: 13px;
+    }
+
+    .trust-label {
+      font-size: 12px;
+    }
+  }
+</style>

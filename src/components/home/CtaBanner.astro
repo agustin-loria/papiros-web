@@ -1,0 +1,107 @@
+---
+import { EMAIL } from '../../lib/data';
+---
+
+<section class="cta-banner">
+  <div class="cta-content">
+    <h2 class="cta-title">Armá tu lista y te pasamos el presupuesto hoy.</h2>
+    <p class="cta-body">Cargás los productos en el catálogo, nos llega por WhatsApp y te respondemos con precios y disponibilidad.</p>
+  </div>
+  <div class="cta-actions">
+    <a href="https://wa.me/5491155555555" class="btn-green" target="_blank" rel="noopener noreferrer">
+      WhatsApp
+    </a>
+    <a href={`mailto:${EMAIL}`} class="btn-outline-dark">{EMAIL}</a>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    padding: 64px 40px;
+    background: var(--color-charcoal);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 620px;
+  }
+
+  .cta-title {
+    font-size: 33px;
+    font-weight: 700;
+    letter-spacing: -.025em;
+    color: #fff;
+  }
+
+  .cta-body {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #A8AFB5;
+    font-family: var(--font-serif);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .btn-green {
+    padding: 16px 28px;
+    background: var(--color-green);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--color-green-hover);
+      color: #fff;
+    }
+  }
+
+  .btn-outline-dark {
+    padding: 16px 28px;
+    border: 1.5px solid #5A6068;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    word-break: break-all;
+
+    &:hover {
+      border-color: #A8AFB5;
+      color: #fff;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .cta-banner {
+      flex-direction: column;
+      padding: 40px 20px;
+      gap: 24px;
+    }
+
+    .cta-title {
+      font-size: 24px;
+    }
+
+    .cta-actions {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .btn-green, .btn-outline-dark {
+      text-align: center;
+      padding: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,120 @@
+---
+import { pillars } from '../../lib/data';
+---
+
+<section class="diff-section">
+  <div class="diff-intro">
+    <span class="diff-eyebrow">Por qué Papiros</span>
+    <h2 class="diff-title">Un proveedor que ya sabe lo que pedís.</h2>
+    <p class="diff-body">Cuatro décadas atendiendo cocinas nos enseñaron que el descartable no se elige por catálogo: se elige por lo que aguanta el plato que sale.</p>
+  </div>
+  <div class="diff-grid">
+    {pillars.map(p => (
+      <div class="diff-card">
+        <span class="diff-num">{p.num}</span>
+        <span class="diff-card-title">{p.titulo}</span>
+        <span class="diff-card-text">{p.texto}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .diff-section {
+    padding: 64px 40px;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 56px;
+    background: #fff;
+  }
+
+  .diff-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .diff-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--color-green);
+  }
+
+  .diff-title {
+    font-size: 34px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -.025em;
+    color: var(--color-charcoal);
+    text-wrap: balance;
+  }
+
+  .diff-body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    font-family: var(--font-serif);
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--color-border);
+  }
+
+  .diff-card {
+    background: #fff;
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .diff-num {
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--color-green);
+  }
+
+  .diff-card-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--color-charcoal);
+    letter-spacing: -.01em;
+  }
+
+  .diff-card-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-body);
+  }
+
+  @media (max-width: 900px) {
+    .diff-section {
+      grid-template-columns: 1fr;
+      padding: 40px 20px;
+      gap: 32px;
+    }
+
+    .diff-title {
+      font-size: 26px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .diff-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .diff-card {
+      padding: 20px;
+    }
+
+    .diff-card-title {
+      font-size: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,223 @@
+---
+import Base from '../layouts/Base.astro';
+import { generations } from '../lib/data';
+---
+
+<Base
+  activePage="about"
+  title="Quiénes somos — Papiros Norte"
+  description="Empresa familiar desde 1986. Tres generaciones distribuyendo descartables en el AMBA."
+>
+  <div class="about-hero">
+    <div class="about-text">
+      <span class="about-eyebrow">Quiénes somos</span>
+      <h1 class="about-title">Empezamos con una camioneta y una libreta.</h1>
+      <p class="about-body">
+        Papiros Norte nació en 1986 repartiendo servilletas y bobinas a los bares del norte del Gran Buenos Aires. Cuarenta años después seguimos siendo la misma familia: tres generaciones, un depósito propio y una lista de clientes que en muchos casos empezó con el abuelo.
+      </p>
+      <p class="about-body">
+        Cambió la escala, no la forma de trabajar. Cuando llamás, atiende alguien que conoce tu cocina.
+      </p>
+    </div>
+    <div class="about-photo photo-placeholder">Foto · la familia en el depósito</div>
+  </div>
+
+  <div class="generations-section">
+    <span class="gen-label">Tres generaciones</span>
+    <div class="gen-grid">
+      {generations.map(g => (
+        <div class="gen-card">
+          <span class="gen-year">{g.anio}</span>
+          <span class="gen-title">{g.titulo}</span>
+          <span class="gen-text">{g.texto}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="how-section">
+    <div class="how-text">
+      <h2 class="how-title">Cómo trabajamos</h2>
+      <p class="how-body">Depósito propio en zona norte, reparto con flota propia y un asesor por cuenta. Sin intermediarios y sin esperar contenedores.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">1 · Nos pasás tu lista o la armás desde el catálogo</div>
+      <div class="how-step">2 · Te mandamos presupuesto el mismo día</div>
+      <div class="how-step">3 · Entregamos en 24 a 48 h en tu local</div>
+      <div class="how-step">4 · Guardamos tu lista para la próxima reposición</div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+  }
+
+  .about-text {
+    padding: 64px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    justify-content: center;
+  }
+
+  .about-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--color-green);
+  }
+
+  .about-title {
+    font-size: 44px;
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -.03em;
+    color: var(--color-charcoal);
+    text-wrap: balance;
+  }
+
+  .about-body {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-body);
+    font-family: var(--font-serif);
+    text-wrap: pretty;
+  }
+
+  .about-photo {
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    min-height: 440px;
+  }
+
+  .generations-section {
+    padding: 56px 48px;
+    background: var(--color-beige);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .gen-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 26px;
+  }
+
+  .gen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--color-border);
+  }
+
+  .gen-card {
+    background: #fff;
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .gen-year {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    color: var(--color-green);
+  }
+
+  .gen-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--color-charcoal);
+    letter-spacing: -.015em;
+  }
+
+  .gen-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-body);
+  }
+
+  .how-section {
+    padding: 56px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    background: #fff;
+  }
+
+  .how-text {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .how-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--color-charcoal);
+  }
+
+  .how-body {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--color-text-body);
+    font-family: var(--font-serif);
+  }
+
+  .how-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+  }
+
+  .how-step {
+    background: #fff;
+    padding: 16px 20px;
+    font-size: 15px;
+    color: var(--color-charcoal);
+  }
+
+  @media (max-width: 768px) {
+    .about-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .about-text {
+      padding: 40px 24px;
+    }
+
+    .about-title {
+      font-size: 30px;
+    }
+
+    .about-photo {
+      min-height: 240px;
+    }
+
+    .generations-section, .how-section {
+      padding: 40px 24px;
+    }
+
+    .gen-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .how-section {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+import Base from '../../layouts/Base.astro';
+import Filters from '../../components/catalog/Filters.tsx';
+import ProductCard from '../../components/catalog/ProductCard.astro';
+import { products } from '../../lib/data';
+
+const showPrices = Astro.url.searchParams.get('prices') === '1';
+const activeCategory = Astro.url.searchParams.get('cat') || '';
+---
+
+<Base
+  activePage="catalog"
+  title="Catálogo — Papiros Norte"
+  description="Catálogo completo de descartables para gastronomía, hotelería y eventos. Pedí presupuesto por WhatsApp."
+  showSearch={true}
+>
+  <div class="catalog-layout">
+    <Filters client:load activeCategory={activeCategory} />
+
+    <div class="catalog-content">
+      <div class="catalog-header">
+        <div class="catalog-header-left">
+          <span class="catalog-breadcrumb">Catálogo</span>
+          <h1 class="catalog-title">Todo el catálogo</h1>
+        </div>
+        <span class="catalog-meta">
+          {products.length} productos · ordenar por: <strong>más pedidos</strong>
+        </span>
+      </div>
+
+      <div class="product-grid">
+        {products.map(p => (
+          <ProductCard product={p} showPrices={showPrices} />
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .catalog-layout {
+    display: grid;
+    grid-template-columns: 246px 1fr;
+    background: #fff;
+    min-height: calc(100vh - 64px);
+  }
+
+  .catalog-content {
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .catalog-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .catalog-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .catalog-breadcrumb {
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  .catalog-title {
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--color-charcoal);
+  }
+
+  .catalog-meta {
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  @media (max-width: 900px) {
+    .catalog-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .catalog-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+</style>

@@ -1,0 +1,191 @@
+---
+import { EMAIL } from '../../lib/data';
+---
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span class="footer-logo-papiros">PAPIROS</span>
+        <span class="footer-logo-norte">NORTE</span>
+      </div>
+      <p class="footer-tagline">Empresa familiar. Tres generaciones distribuyendo descartables en el AMBA.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+        <a href="#" class="social-btn" aria-label="Facebook">FB</a>
+        <a href="https://wa.me/5491155555555" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-col-title">Catálogo</span>
+      <a href="/catalog?cat=papel">Papel</a>
+      <a href="/catalog?cat=plastico">Plástico</a>
+      <a href="/catalog?cat=aluminio">Aluminio</a>
+      <a href="/catalog?cat=higiene">Higiene</a>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-col-title">Empresa</span>
+      <a href="/about">Quiénes somos</a>
+      <a href="/reviews">Reseñas</a>
+      <a href="/contact">Zona de entrega</a>
+    </div>
+
+    <div class="footer-col">
+      <span class="footer-col-title">Contacto</span>
+      <a href="https://wa.me/5491155555555" target="_blank" rel="noopener noreferrer">11 5555-5555</a>
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      <span>Lun a vie 8 a 17 h</span>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Papiros Norte. Todos los derechos reservados.</span>
+    <div class="footer-legal">
+      <a href="#">Menciones legales</a>
+      <a href="#">Condiciones generales de venta</a>
+      <a href="#">Política de privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-dark);
+    color: #8B9299;
+    font-size: 14px;
+  }
+
+  .footer-main {
+    padding: 44px 40px 30px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 36px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .footer-logo-papiros {
+    font-size: 19px;
+    font-weight: 900;
+    color: #fff;
+  }
+
+  .footer-logo-norte {
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: .14em;
+    color: var(--color-green);
+  }
+
+  .footer-tagline {
+    line-height: 1.6;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 9px;
+    padding-top: 4px;
+  }
+
+  .social-btn {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #3B4046;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #C4CBD1;
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--color-green);
+      color: var(--color-green);
+    }
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    a, span {
+      color: #8B9299;
+      text-decoration: none;
+      line-height: 1.5;
+    }
+
+    a:hover {
+      color: #fff;
+    }
+  }
+
+  .footer-col-title {
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .footer-bottom {
+    padding: 16px 40px;
+    background: var(--color-dark);
+    border-top: 1px solid #2A2E33;
+    color: #6B7378;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 22px;
+
+    a {
+      color: #6B7378;
+      text-decoration: none;
+
+      &:hover { color: #8B9299; }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-main {
+      grid-template-columns: 1fr 1fr;
+      padding: 32px 20px 20px;
+      gap: 28px;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px 20px;
+      gap: 12px;
+    }
+
+    .footer-legal {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  }
+</style>

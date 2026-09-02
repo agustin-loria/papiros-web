@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;600;700;900&family=Bitter:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --color-charcoal: #23272C;
+  --color-green: #2F7A55;
+  --color-green-hover: #245C41;
+  --color-beige-light: #FAF9F6;
+  --color-beige: #F5F2ED;
+  --color-beige-dark: #E9E6E0;
+  --color-dark: #1A1D21;
+  --color-border: #DCD8D1;
+  --color-placeholder-bg: #E7E4DE;
+  --color-placeholder-text: #9C978C;
+  --color-text-muted: #6B7280;
+  --color-text-body: #4A5158;
+  --color-text-nav: #3B4046;
+  --color-star: #F0B429;
+
+  --font-sans: 'Chivo', system-ui, sans-serif;
+  --font-serif: 'Bitter', Georgia, serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-beige-dark);
+  color: var(--color-charcoal);
+}
+
+a {
+  color: var(--color-green);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-green-hover);
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Placeholder blocks for photos not yet available */
+.photo-placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--color-placeholder-bg);
+  color: var(--color-placeholder-text);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
