@@ -1,5 +1,6 @@
 ---
 import { EMAIL } from '../../lib/data';
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer class="footer">
@@ -19,17 +20,17 @@ import { EMAIL } from '../../lib/data';
 
     <div class="footer-col">
       <span class="footer-col-title">Catálogo</span>
-      <a href="/catalog?cat=papel">Papel</a>
-      <a href="/catalog?cat=plastico">Plástico</a>
-      <a href="/catalog?cat=aluminio">Aluminio</a>
-      <a href="/catalog?cat=higiene">Higiene</a>
+      <a href={`${base}catalog?cat=papel`}>Papel</a>
+      <a href={`${base}catalog?cat=plastico`}>Plástico</a>
+      <a href={`${base}catalog?cat=aluminio`}>Aluminio</a>
+      <a href={`${base}catalog?cat=higiene`}>Higiene</a>
     </div>
 
     <div class="footer-col">
       <span class="footer-col-title">Empresa</span>
-      <a href="/about">Quiénes somos</a>
-      <a href="/reviews">Reseñas</a>
-      <a href="/contact">Zona de entrega</a>
+      <a href={`${base}about`}>Quiénes somos</a>
+      <a href={`${base}reviews`}>Reseñas</a>
+      <a href={`${base}contact`}>Zona de entrega</a>
     </div>
 
     <div class="footer-col">

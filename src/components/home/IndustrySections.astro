@@ -1,5 +1,6 @@
 ---
 import { sectors } from '../../lib/data';
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="sectors">
@@ -9,7 +10,7 @@ import { sectors } from '../../lib/data';
       <div class="sector-body">
         <span class="sector-title">{s.titulo}</span>
         <span class="sector-text">{s.texto}</span>
-        <a href="/catalog" class="sector-link">{s.link} →</a>
+        <a href={`${base}catalog`} class="sector-link">{s.link} →</a>
       </div>
     </div>
   ))}

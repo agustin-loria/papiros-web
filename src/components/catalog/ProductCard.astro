@@ -7,10 +7,11 @@ interface Props {
 }
 
 const { product, showPrices = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <article class="product-card">
-  <a href={`/catalog/${product.codigo.toLowerCase()}`} class="product-photo-link">
+  <a href={`${base}catalog/${product.codigo.toLowerCase()}`} class="product-photo-link">
     <div class="product-photo photo-placeholder">
       Foto producto
       {product.destacado && <span class="badge-popular">MÁS PEDIDO</span>}
@@ -18,7 +19,7 @@ const { product, showPrices = false } = Astro.props;
   </a>
   <div class="product-info">
     <span class="product-code">{product.codigo}</span>
-    <a href={`/catalog/${product.codigo.toLowerCase()}`} class="product-name">{product.nombre}</a>
+    <a href={`${base}catalog/${product.codigo.toLowerCase()}`} class="product-name">{product.nombre}</a>
     <span class="product-bulto">{product.bulto}</span>
     {showPrices ? (
       <span class="product-price">$ <span class="price-placeholder">——</span> <span class="price-suffix">+ IVA / bulto</span></span>

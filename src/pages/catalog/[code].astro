@@ -12,6 +12,7 @@ export function getStaticPaths() {
 
 const { product } = Astro.props;
 const showPrices = Astro.url.searchParams.get('prices') === '1';
+const base = import.meta.env.BASE_URL;
 
 // Units per pack from bulto string
 const unidadesPorBulto = product.bulto.split(' ')[0].replace(/\./g, '') + '';
@@ -23,9 +24,9 @@ const unidadesPorBulto = product.bulto.split(' ')[0].replace(/\./g, '') + '';
   description={`${product.nombre}. ${product.bulto}. Distribuidora mayorista de descartables para gastronomía y hotelería en el AMBA.`}
 >
   <div class="breadcrumb-bar">
-    <span><a href="/catalog">Catálogo</a> / <a href="/catalog">Vasos de papel</a> / {product.nombre}</span>
+    <span><a href={`${base}catalog`}>Catálogo</a> / <a href={`${base}catalog`}>Vasos de papel</a> / {product.nombre}</span>
     <span class="bc-cart">
-      <a href="/catalog">Mi consulta</a>
+      <a href={`${base}catalog`}>Mi consulta</a>
     </span>
   </div>
 
@@ -82,7 +83,7 @@ const unidadesPorBulto = product.bulto.split(' ')[0].replace(/\./g, '') + '';
       <ul class="product-notes">
         <li>Mínimo de compra por bulto cerrado.</li>
         <li>Entrega en 24 a 48 h en todo el AMBA.</li>
-        <li>¿No sabés qué medida te conviene? <a href="/contact">Escribinos y te asesoramos.</a></li>
+        <li>¿No sabés qué medida te conviene? <a href={`${base}contact`}>Escribinos y te asesoramos.</a></li>
       </ul>
     </div>
   </div>

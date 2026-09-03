@@ -1,15 +1,16 @@
 ---
 import { categories } from '../../lib/data';
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="category-section">
   <div class="category-header">
     <h2 class="category-title">Qué distribuimos</h2>
-    <a href="/catalog" class="category-link">Ver catálogo completo →</a>
+    <a href={`${base}catalog`} class="category-link">Ver catálogo completo →</a>
   </div>
   <div class="category-grid">
     {categories.map(cat => (
-      <a href={`/catalog?cat=${encodeURIComponent(cat.nombre)}`} class="category-card">
+      <a href={`${base}catalog?cat=${encodeURIComponent(cat.nombre)}`} class="category-card">
         <div class="category-photo photo-placeholder">Foto</div>
         <div class="category-info">
           <span class="category-name">{cat.nombre}</span>

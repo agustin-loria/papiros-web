@@ -1,5 +1,6 @@
 ---
 import { homeReviews } from '../../lib/data';
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="reviews-strip">
@@ -10,7 +11,7 @@ import { homeReviews } from '../../lib/data';
         <span class="stars">★★★★★</span> 4,8 · Google
       </span>
     </div>
-    <a href="/reviews" class="reviews-link">Ver las 128 reseñas →</a>
+    <a href={`${base}reviews`} class="reviews-link">Ver las 128 reseñas →</a>
   </div>
   <div class="reviews-grid">
     {homeReviews.map(rv => (

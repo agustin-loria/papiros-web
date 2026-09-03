@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="hero">
@@ -16,7 +17,7 @@
       de todo el AMBA con descartables de papel, plástico y aluminio.
     </p>
     <div class="hero-ctas">
-      <a href="/catalog" class="btn-primary">Ver catálogo</a>
+      <a href={`${base}catalog`} class="btn-primary">Ver catálogo</a>
       <a href="https://wa.me/5491155555555" class="btn-outline-white" target="_blank" rel="noopener noreferrer">
         Pedir presupuesto por WhatsApp
       </a>
