@@ -1,34 +1,103 @@
 ---
 const base = import.meta.env.BASE_URL;
+
+const slides = [
+  {
+    lineA: "Papel, plástico y aluminio.",
+    lineB: "Todo el AMBA, todos los días.",
+    sub: "Depósito propio y flota propia. Pedís hoy, entregamos entre 24 y 48 horas en tu local.",
+  },
+  {
+    lineA: "El material más antiguo del mundo.",
+    lineB: "En tu depósito el martes.",
+    sub: "Vasos, bandejas, servilletas, film y aluminio. Mil doscientos productos en stock, sin esperar importaciones.",
+  },
+  {
+    lineA: "Cuatro mil años de papel.",
+    lineB: "Cuarenta atendiendo tu negocio.",
+    sub: "Empresa familiar, tres generaciones. Productos de papel, plástico y aluminio para restaurantes, hoteles y eventos.",
+  },
+];
 ---
 
 <section class="hero">
-  <div class="hero-bg photo-placeholder">
-    <!-- TODO: real photo — depósito, pallets y flota -->
-  </div>
+  <div class="hero-bg photo-placeholder"></div>
   <div class="hero-gradient"></div>
   <div class="hero-photo-label">Foto · depósito, pallets y flota (pendiente)</div>
 
   <div class="hero-content">
     <span class="hero-eyebrow">Distribuidora mayorista · desde 1986</span>
-    <h1 class="hero-heading">Lo último que toca<br>tu cliente.</h1>
-    <p class="hero-body">
-      El vaso, la bandeja, la servilleta. Abastecemos restaurantes, hoteles y eventos
-      de todo el AMBA con descartables de papel, plástico y aluminio.
-    </p>
+
+    <div class="hero-slides">
+      {slides.map((s, i) => (
+        <div class={`hero-slide${i === 0 ? ' is-active' : ''}`} data-index={i}>
+          <h1 class="hero-heading">
+            <span class="hero-line-a">{s.lineA}</span>
+            <span class="hero-line-b">{s.lineB}</span>
+          </h1>
+          <p class="hero-body">{s.sub}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="hero-dots" role="tablist" aria-label="Diapositivas">
+      {slides.map((_, i) => (
+        <button
+          class={`hero-dot${i === 0 ? ' is-active' : ''}`}
+          data-dot={i}
+          role="tab"
+          aria-label={`Diapositiva ${i + 1}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+        ></button>
+      ))}
+    </div>
+
     <div class="hero-ctas">
-      <a href="https://wa.me/5491155555555" class="btn-outline-white btn-wa" target="_blank" rel="noopener noreferrer">
+      <a href={`${base}catalog`} class="btn-catalog">Ver catálogo</a>
+      <a href="https://wa.me/5491155555555" class="btn-wa" target="_blank" rel="noopener noreferrer">
         Pedir presupuesto por WhatsApp
       </a>
-      <a href={`${base}catalog`} class="btn-primary btn-catalog">Ver catálogo</a>
     </div>
   </div>
 </section>
 
+<script>
+  const INTERVAL = 5000;
+
+  const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+  const dots   = document.querySelectorAll<HTMLElement>('.hero-dot');
+  let current  = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(index: number) {
+    slides[current].classList.remove('is-active');
+    dots[current].classList.remove('is-active');
+    dots[current].setAttribute('aria-selected', 'false');
+    current = index;
+    slides[current].classList.add('is-active');
+    dots[current].classList.add('is-active');
+    dots[current].setAttribute('aria-selected', 'true');
+  }
+
+  function startTimer() {
+    timer = setInterval(() => goTo((current + 1) % slides.length), INTERVAL);
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      clearInterval(timer);
+      goTo(i);
+      startTimer();
+    });
+  });
+
+  startTimer();
+</script>
+
 <style>
   .hero {
     position: relative;
-    height: 330px;
+    height: 430px;
     display: grid;
     place-items: center;
     overflow: hidden;
@@ -39,7 +108,6 @@ const base = import.meta.env.BASE_URL;
     inset: 0;
     background: #DAD6CF;
     border: 1px dashed #B9B3A7;
-    font-size: 11px;
   }
 
   .hero-gradient {
@@ -82,21 +150,79 @@ const base = import.meta.env.BASE_URL;
     color: #9ED4B4;
   }
 
+  .hero-slides {
+    position: relative;
+    min-height: 212px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero-slide {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    opacity: 0;
+    transition: opacity 320ms cubic-bezier(.22, 1, .36, 1);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  .hero-slide.is-active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+  }
+
   .hero-heading {
+    margin: 0;
     font-size: 34px;
     line-height: 1.03;
     letter-spacing: -.03em;
     font-weight: 900;
     color: #fff;
     text-wrap: balance;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-line-a {
+    color: #fff;
+  }
+
+  .hero-line-b {
+    color: #9ED4B4;
   }
 
   .hero-body {
+    margin: 0;
     font-size: 14px;
     line-height: 1.5;
     color: #DDE1DC;
     font-family: var(--font-serif);
     text-wrap: pretty;
+  }
+
+  .hero-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .hero-dot {
+    width: 26px;
+    height: 3px;
+    background: rgba(255,255,255,.35);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 200ms;
+  }
+
+  .hero-dot.is-active {
+    background: #fff;
   }
 
   .hero-ctas {
@@ -106,41 +232,37 @@ const base = import.meta.env.BASE_URL;
     padding-top: 4px;
   }
 
-  .btn-primary {
+  .btn-catalog,
+  .btn-wa {
     padding: 15px;
-    background: var(--color-green);
-    color: #fff;
     font-family: var(--font-sans);
     font-weight: 700;
     font-size: 15px;
     text-decoration: none;
     text-align: center;
-
-    &:hover {
-      background: var(--color-green-hover);
-      color: #fff;
-    }
+    display: block;
   }
 
-  .btn-outline-white {
-    padding: 15px;
+  .btn-catalog {
+    background: var(--color-green);
+    color: #fff;
+  }
+
+  .btn-catalog:hover {
+    background: var(--color-green-hover);
+    color: #fff;
+  }
+
+  .btn-wa {
     border: 1.5px solid #fff;
     color: #fff;
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 15px;
-    text-decoration: none;
-    text-align: center;
+  }
 
-    &:hover {
-      background: rgba(255,255,255,.1);
-    }
+  .btn-wa:hover {
+    background: rgba(255,255,255,.1);
   }
 
   @media (min-width: 769px) {
-    .hero {
-      height: 430px;
-    }
 
     .hero-gradient {
       background: linear-gradient(90deg, rgba(35,39,44,.92) 0%, rgba(35,39,44,.72) 46%, rgba(35,39,44,.15) 100%);
@@ -158,7 +280,6 @@ const base = import.meta.env.BASE_URL;
       position: relative;
       inset: auto;
       width: 100%;
-      max-width: 620px;
       padding: 0 40px;
       margin-right: auto;
       gap: 22px;
@@ -167,6 +288,10 @@ const base = import.meta.env.BASE_URL;
     .hero-eyebrow {
       font-size: 12px;
       letter-spacing: .2em;
+    }
+
+    .hero-slides {
+      min-height: 216px;
     }
 
     .hero-heading {
@@ -186,13 +311,8 @@ const base = import.meta.env.BASE_URL;
       padding-top: 6px;
     }
 
-    .btn-primary {
-      padding: 15px 26px;
-      text-align: left;
-      order: -1;
-    }
-
-    .btn-outline-white {
+    .btn-catalog,
+    .btn-wa {
       padding: 15px 26px;
       text-align: left;
     }
