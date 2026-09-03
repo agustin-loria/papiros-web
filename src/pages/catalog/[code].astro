@@ -301,6 +301,8 @@ const unidadesPorBulto = product.bulto.split(' ')[0].replace(/\./g, '') + '';
     display: flex;
     flex-direction: column;
     gap: 3px;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .related-name {
@@ -308,6 +310,9 @@ const unidadesPorBulto = product.bulto.split(' ')[0].replace(/\./g, '') + '';
     font-weight: 700;
     color: var(--color-charcoal);
     line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .related-bulto {
@@ -335,6 +340,16 @@ const unidadesPorBulto = product.bulto.split(' ')[0].replace(/\./g, '') + '';
 
     .breadcrumb-bar {
       padding: 14px 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .related-section {
+      padding: 0 20px 32px;
     }
   }
 </style>

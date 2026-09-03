@@ -15,7 +15,7 @@ const activeCategory = Astro.url.searchParams.get('cat') || '';
   showSearch={true}
 >
   <div class="catalog-layout">
-    <Filters client:load activeCategory={activeCategory} />
+    <Filters client:load activeCategory={activeCategory} base={import.meta.env.BASE_URL} />
 
     <div class="catalog-content">
       <div class="catalog-header">

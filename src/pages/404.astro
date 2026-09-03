@@ -1,0 +1,334 @@
+---
+import Base from '../layouts/Base.astro';
+import { filterCategories, WHATSAPP_NUMBER } from '../lib/data';
+
+const base = import.meta.env.BASE_URL;
+const atajos = filterCategories.slice(0, 6);
+---
+
+<Base title="Página no encontrada — Papiros Norte" description="Esta página no está en stock.">
+  <div class="not-found">
+    <div class="nf-main">
+      <div class="nf-left">
+        <span class="nf-number">404</span>
+        <div class="nf-text">
+          <h1 class="nf-title">Esta página no está en stock.</h1>
+          <p class="nf-body">Se movió, se dio de baja o el link venía con un error. Lo que sí tenemos son mil doscientos productos, ahí abajo.</p>
+        </div>
+        <div class="nf-search">
+          <input type="search" placeholder="Buscar producto o código…" class="nf-input" />
+        </div>
+        <div class="nf-ctas">
+          <a href={`${base}catalog`} class="nf-btn-catalog">Ver catálogo</a>
+          <a href={base} class="nf-btn-back">Volver al inicio</a>
+        </div>
+      </div>
+
+      <div class="nf-right">
+        <div class="nf-search nf-search-desktop">
+          <input type="search" placeholder="Buscar producto o código…" class="nf-input" />
+        </div>
+        <div class="nf-cat-list">
+          {atajos.map(a => (
+            <a href={`${base}catalog`} class="nf-cat-row">
+              <span>{a.nombre}</span>
+              <span class="nf-cat-n">{a.n}</span>
+            </a>
+          ))}
+        </div>
+        <p class="nf-wa-note">
+          ¿Buscabas algo puntual? <a href={`https://wa.me/${WHATSAPP_NUMBER}`} class="nf-wa-link" target="_blank" rel="noopener noreferrer"><b>Escribinos por WhatsApp</b></a> y te lo buscamos nosotros.
+        </p>
+      </div>
+    </div>
+
+    <div class="nf-cats-mobile">
+      <span class="nf-cats-label">Categorías más pedidas</span>
+      <div class="nf-chips">
+        {atajos.map(a => (
+          <a href={`${base}catalog`} class="nf-chip">{a.nombre}</a>
+        ))}
+      </div>
+      <p class="nf-wa-note">
+        ¿Buscabas algo puntual? <a href={`https://wa.me/${WHATSAPP_NUMBER}`} class="nf-wa-link" target="_blank" rel="noopener noreferrer"><b>Escribinos por WhatsApp</b></a> y te lo buscamos nosotros.
+      </p>
+    </div>
+
+    <div class="nf-footer">
+      <span>© 2026 Papiros Norte. Todos los derechos reservados.</span>
+      <span>Error 404 — página no encontrada</span>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .not-found {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nf-main {
+    padding: 44px 20px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nf-left {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nf-right {
+    display: none;
+  }
+
+  .nf-number {
+    font-size: 92px;
+    line-height: .86;
+    font-weight: 900;
+    letter-spacing: -.055em;
+    color: var(--color-charcoal);
+    display: block;
+  }
+
+  .nf-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nf-title {
+    margin: 0;
+    font-size: 27px;
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -.025em;
+    color: var(--color-charcoal);
+    text-wrap: balance;
+  }
+
+  .nf-body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    font-family: var(--font-serif);
+    text-wrap: pretty;
+  }
+
+  .nf-search {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border);
+    padding: 13px 14px;
+  }
+
+  .nf-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--color-charcoal);
+    width: 100%;
+  }
+
+  .nf-input::placeholder {
+    color: #9AA0A6;
+  }
+
+  .nf-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .nf-btn-catalog,
+  .nf-btn-back {
+    padding: 15px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+  }
+
+  .nf-btn-catalog {
+    background: var(--color-green);
+    color: #fff;
+  }
+
+  .nf-btn-catalog:hover {
+    background: var(--color-green-hover);
+  }
+
+  .nf-btn-back {
+    border: 1.5px solid var(--color-charcoal);
+    color: var(--color-charcoal);
+  }
+
+  .nf-btn-back:hover {
+    background: rgba(35,39,44,.05);
+  }
+
+  .nf-cats-mobile {
+    background: var(--color-beige);
+    border-top: 1px solid var(--color-border);
+    padding: 22px 20px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nf-cats-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .nf-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nf-chip {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-charcoal);
+    text-decoration: none;
+  }
+
+  .nf-chip:hover {
+    border-color: var(--color-charcoal);
+  }
+
+  .nf-wa-note {
+    margin: 0;
+    font-size: 14px;
+    font-family: var(--font-serif);
+    color: var(--color-text-body);
+    line-height: 1.55;
+    padding-top: 4px;
+  }
+
+  .nf-wa-link {
+    color: var(--color-green);
+    text-decoration: none;
+  }
+
+  .nf-footer {
+    display: none;
+  }
+
+  /* ── Desktop ── */
+  @media (min-width: 769px) {
+    .nf-main {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 56px;
+      padding: 64px 36px 56px;
+      align-items: center;
+    }
+
+    .nf-left {
+      gap: 20px;
+    }
+
+    .nf-left .nf-search {
+      display: none;
+    }
+
+    .nf-right {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .nf-search-desktop {
+      display: flex;
+    }
+
+    .nf-search-desktop .nf-input {
+      font-size: 15px;
+    }
+
+    .nf-number {
+      font-size: 132px;
+      line-height: .82;
+      letter-spacing: -.06em;
+    }
+
+    .nf-title {
+      font-size: 38px;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+
+    .nf-body {
+      font-size: 17px;
+      line-height: 1.65;
+      max-width: 440px;
+    }
+
+    .nf-ctas {
+      flex-direction: row;
+      gap: 12px;
+      padding-top: 4px;
+    }
+
+    .nf-btn-catalog,
+    .nf-btn-back {
+      padding: 15px 26px;
+      text-align: left;
+      display: inline-block;
+    }
+
+    .nf-cats-mobile {
+      display: none;
+    }
+
+    .nf-cat-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--color-border);
+      background: var(--color-border);
+      gap: 1px;
+    }
+
+    .nf-cat-row {
+      background: #fff;
+      padding: 14px 18px;
+      font-size: 15px;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .nf-cat-row:hover {
+      background: var(--color-beige-light);
+    }
+
+    .nf-cat-n {
+      color: #9AA0A6;
+    }
+
+    .nf-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 36px;
+      background: var(--color-dark);
+      color: #6B7378;
+      font-size: 12px;
+    }
+  }
+</style>

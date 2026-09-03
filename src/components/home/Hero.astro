@@ -151,29 +151,23 @@ const slides = [
   }
 
   .hero-slides {
-    position: relative;
-    min-height: 212px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-areas: "slide";
+    align-items: end;
   }
 
   .hero-slide {
+    grid-area: slide;
     display: flex;
     flex-direction: column;
     gap: 11px;
     opacity: 0;
     transition: opacity 320ms cubic-bezier(.22, 1, .36, 1);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     pointer-events: none;
   }
 
   .hero-slide.is-active {
     opacity: 1;
-    position: relative;
     pointer-events: auto;
   }
 
@@ -288,10 +282,6 @@ const slides = [
     .hero-eyebrow {
       font-size: 12px;
       letter-spacing: .2em;
-    }
-
-    .hero-slides {
-      min-height: 216px;
     }
 
     .hero-heading {
