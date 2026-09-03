@@ -79,7 +79,7 @@ const navLinks = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 40px;
+    padding: 14px 18px;
     border-bottom: 1px solid var(--color-border);
     background: #fff;
     position: sticky;
@@ -95,16 +95,16 @@ const navLinks = [
   }
 
   .logo-papiros {
-    font-size: 23px;
+    font-size: 17px;
     font-weight: 900;
     letter-spacing: -.02em;
     color: var(--color-charcoal);
   }
 
   .logo-norte {
-    font-size: 23px;
+    font-size: 17px;
     font-weight: 400;
-    letter-spacing: .14em;
+    letter-spacing: .12em;
     color: var(--color-green);
   }
 
@@ -115,7 +115,7 @@ const navLinks = [
   }
 
   .nav-links {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 30px;
   }
@@ -139,7 +139,7 @@ const navLinks = [
   }
 
   .search-box {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 10px;
     width: 330px;
@@ -150,7 +150,7 @@ const navLinks = [
   }
 
   .btn-cta {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 9px;
     padding: 10px 18px;
@@ -167,7 +167,7 @@ const navLinks = [
   }
 
   .hamburger {
-    display: none;
+    display: block;
     font-size: 22px;
     color: var(--color-charcoal);
     background: none;
@@ -176,11 +176,18 @@ const navLinks = [
   }
 
   .mobile-menu {
-    display: none;
+    display: flex;
     flex-direction: column;
     background: #fff;
     border-bottom: 1px solid var(--color-border);
     padding: 8px 0;
+    height: 0;
+    overflow: hidden;
+    transition: height .2s;
+
+    &.open {
+      height: auto;
+    }
   }
 
   .mobile-link {
@@ -208,32 +215,33 @@ const navLinks = [
     text-decoration: none;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 769px) {
     .navbar {
-      padding: 14px 18px;
+      padding: 18px 40px;
     }
 
     .logo-papiros, .logo-norte {
-      font-size: 17px;
+      font-size: 23px;
     }
 
-    .nav-links, .btn-cta, .search-box {
-      display: none;
+    .logo-norte {
+      letter-spacing: .14em;
+    }
+
+    .nav-links {
+      display: flex;
+    }
+
+    .btn-cta {
+      display: flex;
     }
 
     .hamburger {
-      display: block;
+      display: none;
     }
 
     .mobile-menu {
-      display: flex;
-      height: 0;
-      overflow: hidden;
-      transition: height .2s;
-
-      &.open {
-        height: auto;
-      }
+      display: none;
     }
   }
 </style>

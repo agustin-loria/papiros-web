@@ -17,10 +17,10 @@ const base = import.meta.env.BASE_URL;
       de todo el AMBA con descartables de papel, plástico y aluminio.
     </p>
     <div class="hero-ctas">
-      <a href={`${base}catalog`} class="btn-primary">Ver catálogo</a>
-      <a href="https://wa.me/5491155555555" class="btn-outline-white" target="_blank" rel="noopener noreferrer">
+      <a href="https://wa.me/5491155555555" class="btn-outline-white btn-wa" target="_blank" rel="noopener noreferrer">
         Pedir presupuesto por WhatsApp
       </a>
+      <a href={`${base}catalog`} class="btn-primary btn-catalog">Ver catálogo</a>
     </div>
   </div>
 </section>
@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
 <style>
   .hero {
     position: relative;
-    height: 430px;
+    height: 330px;
     display: grid;
     place-items: center;
     overflow: hidden;
@@ -45,46 +45,46 @@ const base = import.meta.env.BASE_URL;
   .hero-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(35,39,44,.92) 0%, rgba(35,39,44,.72) 46%, rgba(35,39,44,.15) 100%);
+    background: linear-gradient(180deg, rgba(35,39,44,.35) 0%, rgba(35,39,44,.92) 65%);
   }
 
   .hero-photo-label {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 12px;
+    right: 12px;
     z-index: 2;
     color: #4E525A;
     background: rgba(255,255,255,.72);
-    padding: 6px 10px;
-    font-size: 11px;
+    padding: 5px 8px;
+    font-size: 9px;
     font-weight: 700;
-    letter-spacing: .16em;
+    letter-spacing: .14em;
     text-transform: uppercase;
   }
 
   .hero-content {
-    position: relative;
-    width: 100%;
-    padding: 0 40px;
+    position: absolute;
+    inset: auto 20px 22px;
+    width: auto;
+    max-width: 100%;
+    padding: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    max-width: 620px;
-    margin-right: auto;
+    gap: 13px;
   }
 
   .hero-eyebrow {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: .2em;
+    letter-spacing: .18em;
     text-transform: uppercase;
     color: #9ED4B4;
   }
 
   .hero-heading {
-    font-size: 60px;
-    line-height: 1.02;
+    font-size: 34px;
+    line-height: 1.03;
     letter-spacing: -.03em;
     font-weight: 900;
     color: #fff;
@@ -92,28 +92,29 @@ const base = import.meta.env.BASE_URL;
   }
 
   .hero-body {
-    font-size: 19px;
-    line-height: 1.55;
+    font-size: 14px;
+    line-height: 1.5;
     color: #DDE1DC;
     font-family: var(--font-serif);
-    max-width: 520px;
     text-wrap: pretty;
   }
 
   .hero-ctas {
     display: flex;
-    gap: 14px;
-    padding-top: 6px;
+    flex-direction: column;
+    gap: 9px;
+    padding-top: 4px;
   }
 
   .btn-primary {
-    padding: 15px 26px;
+    padding: 15px;
     background: var(--color-green);
     color: #fff;
     font-family: var(--font-sans);
     font-weight: 700;
     font-size: 15px;
     text-decoration: none;
+    text-align: center;
 
     &:hover {
       background: var(--color-green-hover);
@@ -122,64 +123,78 @@ const base = import.meta.env.BASE_URL;
   }
 
   .btn-outline-white {
-    padding: 15px 26px;
+    padding: 15px;
     border: 1.5px solid #fff;
     color: #fff;
     font-family: var(--font-sans);
     font-weight: 700;
     font-size: 15px;
     text-decoration: none;
+    text-align: center;
 
     &:hover {
       background: rgba(255,255,255,.1);
     }
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 769px) {
     .hero {
-      height: 330px;
+      height: 430px;
     }
 
     .hero-gradient {
-      background: linear-gradient(180deg, rgba(35,39,44,.35) 0%, rgba(35,39,44,.92) 65%);
-    }
-
-    .hero-content {
-      position: absolute;
-      inset: auto 20px 22px;
-      max-width: 100%;
-      padding: 0;
-      margin: 0;
-      gap: 13px;
-    }
-
-    .hero-eyebrow {
-      font-size: 10px;
-      letter-spacing: .18em;
-    }
-
-    .hero-heading {
-      font-size: 34px;
-    }
-
-    .hero-body {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .hero-ctas {
-      flex-direction: column;
-      gap: 9px;
-
-      a {
-        text-align: center;
-        padding: 15px;
-      }
+      background: linear-gradient(90deg, rgba(35,39,44,.92) 0%, rgba(35,39,44,.72) 46%, rgba(35,39,44,.15) 100%);
     }
 
     .hero-photo-label {
-      font-size: 9px;
-      letter-spacing: .14em;
+      top: 14px;
+      right: 14px;
+      font-size: 11px;
+      letter-spacing: .16em;
+      padding: 6px 10px;
+    }
+
+    .hero-content {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      max-width: 620px;
+      padding: 0 40px;
+      margin-right: auto;
+      gap: 22px;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: .2em;
+    }
+
+    .hero-heading {
+      font-size: 60px;
+      line-height: 1.02;
+    }
+
+    .hero-body {
+      font-size: 19px;
+      line-height: 1.55;
+      max-width: 520px;
+    }
+
+    .hero-ctas {
+      flex-direction: row;
+      gap: 14px;
+      padding-top: 6px;
+    }
+
+    .btn-primary {
+      padding: 15px 26px;
+      text-align: left;
+      order: -1;
+    }
+
+    .btn-outline-white {
+      padding: 15px 26px;
+      text-align: left;
     }
   }
 </style>

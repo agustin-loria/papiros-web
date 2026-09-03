@@ -2,6 +2,11 @@
 import { EMAIL } from '../../lib/data';
 ---
 
+<a href="https://wa.me/5491155555555" class="cta-mobile-bar" target="_blank" rel="noopener noreferrer">
+  <span>Pedir presupuesto</span>
+  <span>WhatsApp →</span>
+</a>
+
 <section class="cta-banner">
   <div class="cta-content">
     <h2 class="cta-title">Armá tu lista y te pasamos el presupuesto hoy.</h2>
@@ -16,13 +21,25 @@ import { EMAIL } from '../../lib/data';
 </section>
 
 <style>
-  .cta-banner {
-    padding: 64px 40px;
-    background: var(--color-charcoal);
+  .cta-mobile-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    padding: 14px 18px;
+    background: var(--color-green);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--color-green-hover);
+      color: #fff;
+    }
+  }
+
+  .cta-banner {
+    display: none;
   }
 
   .cta-content {
@@ -83,25 +100,18 @@ import { EMAIL } from '../../lib/data';
     }
   }
 
-  @media (max-width: 900px) {
+  @media (min-width: 769px) {
+    .cta-mobile-bar {
+      display: none;
+    }
+
     .cta-banner {
-      flex-direction: column;
-      padding: 40px 20px;
-      gap: 24px;
-    }
-
-    .cta-title {
-      font-size: 24px;
-    }
-
-    .cta-actions {
-      width: 100%;
-      flex-direction: column;
-    }
-
-    .btn-green, .btn-outline-dark {
-      text-align: center;
-      padding: 16px;
+      display: flex;
+      padding: 64px 40px;
+      background: var(--color-charcoal);
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
     }
   }
 </style>
