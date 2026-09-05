@@ -5,7 +5,7 @@ import type {
 
 export const categories: Category[] = [
   { nombre: "Vasos de papel", detalle: "de 120 a 500 cc, lisos e impresos" },
-  { nombre: "Vasos y copas plásticas", detalle: "PP, PET y cristal descartable" },
+  { nombre: "Vasos y copas plásticas", detalle: "PP, PET y cristal" },
   { nombre: "Sorbetes", detalle: "papel, plástico y compostables" },
   { nombre: "Cubiertos", detalle: "sueltos, en kit y enfundados" },
   { nombre: "Bandejas", detalle: "cartón, plástico y espuma" },
@@ -63,7 +63,7 @@ export const relatedProducts: RelatedProduct[] = [
 ];
 
 export const generations: Generation[] = [
-  { anio: "1986", titulo: "Una camioneta y una libreta", texto: "El fundador arranca repartiendo servilletas y bobinas a los bares de zona norte, cliente por cliente." },
+  { anio: "1986", titulo: "Una camioneta y una libreta", texto: "La fundadora arranca repartiendo servilletas y bobinas a los bares de zona norte, cliente por cliente." },
   { anio: "2004", titulo: "Depósito propio", texto: "La segunda generación suma depósito, flota y las primeras cuentas de hotelería." },
   { anio: "Hoy", titulo: "Catálogo y reposición", texto: "La tercera generación digitaliza el catálogo y el historial de cada cliente, con la misma atención de siempre." },
 ];

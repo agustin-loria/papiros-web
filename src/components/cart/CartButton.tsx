@@ -13,8 +13,18 @@ export default function CartButton() {
 
   return (
     <>
-      <button className="cart-btn" onClick={() => setOpen(true)}>
-        Mi consulta
+      <button className="cart-btn" onClick={() => setOpen(true)} aria-label="Mi consulta">
+        <svg className="cart-btn-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Papiros Norte" xmlns:c2pa="http://c2pa.org/manifest">
+          <g transform="translate(64 64) rotate(15) scale(0.92) translate(-69 -70)" fill="none" stroke="#23272C" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M104 22H90V102H34" stroke-width="9"/>
+            <circle cx="92" cy="112" r="8" stroke-width="8"/>
+            <rect x="40" y="44" width="44" height="52" rx="4" stroke-width="9"/>
+            <path d="M40 57H84" stroke-width="7"/>
+            <path d="M50 88V66h7a6 6 0 0 1 0 12H50" stroke-width="7"/>
+            <path d="M66 88V66l10 22V66" stroke-width="7"/>
+          </g>
+        </svg>
+        <span className="cart-btn-text">Mi consulta</span>
         <span className="cart-badge">{count}</span>
       </button>
 
@@ -73,8 +83,8 @@ export default function CartButton() {
         .cart-btn {
           display: flex;
           align-items: center;
-          gap: 8px;
-          padding: 9px 16px;
+          gap: 0;
+          padding: 9px 8px 9px 6px;
           border: 1.5px solid var(--color-charcoal);
           color: var(--color-charcoal);
           font-family: var(--font-sans);
@@ -82,6 +92,23 @@ export default function CartButton() {
           font-size: 14px;
           background: transparent;
           cursor: pointer;
+          height: 100%;
+          min-width: 62px;
+        }
+        .cart-btn-logo {
+          width: 28px;
+          height: 28px;
+        }
+        .cart-btn-text {
+          display: none;
+        }
+        @media (min-width: 640px) {
+          .cart-btn-logo { display: none; }
+          .cart-btn-text { display: inline; }
+          .cart-btn {
+            gap: 8px;
+            padding: 9px 16px;
+          }
         }
         .cart-badge {
           background: var(--color-green);
